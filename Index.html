@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Chá Rifa do Gustavo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(10, 50px);
+            gap: 10px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .number {
+            width: 50px;
+            height: 50px;
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        .reserved {
+            background-color: #d9534f;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Chá Rifa do Gustavo</h1>
+<p>Escolha um número!</p>
+
+<div class="grid" id="grid"></div>
+
+<script>
+// Reservas manuais
+const reservas = {
+    5: "João",
+    12: "Maria",
+    32: "Carlos"
+};
+
+// Cria os números na tela
+const grid = document.getElementById('grid');
+
+for (let i = 1; i <= 100; i++) {
+    const div = document.createElement('div');
+    div.className = 'number';
+    div.innerText = i;
+
+    if (reservas[i]) {
+        div.classList.add('reserved');
+        div.innerText = i + "\n🚫";
+        div.title = "Reservado por " + reservas[i];
+    }
+
+    grid.appendChild(div);
+}
+</script>
+
+</body>
+</html>
